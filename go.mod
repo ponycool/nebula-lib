@@ -1,4 +1,4 @@
-module nebula-lib
+module ponycool.com/nebula/nebula-lib
 
 go 1.19
 
