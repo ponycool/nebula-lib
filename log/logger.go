@@ -53,7 +53,7 @@ func NewLogger(mod ...ModOptions) *zap.Logger {
 	l.Lock()
 	defer l.Unlock()
 	if l.initial {
-		l.Info("[NewLogger] logger Invited")
+		l.Info("[Logger] logger Invited")
 		return nil
 	}
 	l.Opts = &Options{
@@ -91,7 +91,7 @@ func NewLogger(mod ...ModOptions) *zap.Logger {
 	l.zapConfig.Level.SetLevel(l.Opts.Level)
 	l.init()
 	l.initial = true
-	l.Info("[NewLogger] success")
+	l.Info("[Logger] success")
 	return l.Logger
 }
 
@@ -102,7 +102,9 @@ func (l *Logger) init() {
 	if err != nil {
 		panic(err)
 	}
-	defer l.Logger.Sync()
+	defer func(Logger *zap.Logger) {
+		_ = Logger.Sync()
+	}(l.Logger)
 }
 
 func (l *Logger) setSyncers() {
@@ -183,7 +185,6 @@ func SetDevelopment(Development bool) ModOptions {
 }
 func (l *Logger) cores() zap.Option {
 	fileEncoder := zapcore.NewJSONEncoder(l.zapConfig.EncoderConfig)
-	//consoleEncoder := zapcore.NewConsoleEncoder(l.zapConfig.EncoderConfig)
 	encoderConfig := zap.NewDevelopmentEncoderConfig()
 	encoderConfig.EncodeTime = timeEncoder
 	encoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
