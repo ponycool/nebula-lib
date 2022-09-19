@@ -4,4 +4,4 @@ test:
 
 .PHONY: deploy
 deploy:
-	cp dev.env .env
+	cp .env.dev .env
