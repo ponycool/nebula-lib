@@ -1,6 +1,6 @@
 # Nebula Lib
 
-[English](README-EN.md)
+[中文](README.md)
 
 ## Getting started
 
@@ -80,7 +80,7 @@ project. You can use Shields to add some to your README. Many services also have
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see
 GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-## 安装
+## Installation
 
 ```
 go get github.com/ponycool/nebula-lib
