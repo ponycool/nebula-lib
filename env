@@ -1,0 +1,6 @@
+APP_ID=xxx
+CLUSTER=dev
+IP=http://127.0.0.1
+NAMESPACE_NAME=application
+IS_BACKUP_CONFIG=true
+SECRET=0a0a22440c1d48db91c4db9e0c700d40
