@@ -28,6 +28,12 @@ GIFs rather than actual videos). Tools like ttygif can help, but check out Ascii
 go get github.com/ponycool/nebula-lib
 ```
 
+## Test
+
+```
+go test -v ./test/...
+```
+
 ## Usage
 
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
