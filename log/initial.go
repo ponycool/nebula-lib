@@ -25,3 +25,11 @@ func Init(opts ...ModOptions) *zap.Logger {
 	initial = true
 	return logger
 }
+
+// Get 获取初始化后Logger实例
+func Get() *zap.Logger {
+	if logger == nil {
+		panic("logger is not initialized")
+	}
+	return logger
+}
