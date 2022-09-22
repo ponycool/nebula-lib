@@ -3,11 +3,11 @@
 [English](README-EN.md)
 
 
-## Name
+## 项目名称
 
 Nebula Lib
 
-## Description
+## 项目描述
 
 Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be
 unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your
@@ -29,12 +29,17 @@ GIFs rather than actual videos). Tools like ttygif can help, but check out Ascii
 go get github.com/ponycool/nebula-lib
 ```
 
-## Usage
+## 使用
 
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
 usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
 include in the README.
 
+## 测试
+
+```
+go test -v ./test/...
+```
 ## Support
 
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address,

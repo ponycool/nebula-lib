@@ -25,7 +25,7 @@ func main() {
 	// 初始化配置
 	conf.Load()
 	isBackupConfig, _ := strconv.ParseBool(os.Getenv("IS_BACKUP_CONFIG"))
-	c := &conf.Conf{
+	opts := &conf.Options{
 		AppID:          os.Getenv("APP_ID"),
 		Cluster:        os.Getenv("CLUSTER"),
 		IP:             os.Getenv("IP"),
@@ -33,10 +33,15 @@ func main() {
 		IsBackupConfig: isBackupConfig,
 		Secret:         os.Getenv("SECRET"),
 	}
-	//logger.Info("",c)
-	conf, err := conf.Init(c)
+
+	c, err := conf.Init(opts)
 	if err != nil {
-		logger.Info("1" + err.Error())
+		defer logger.Error("config initial failed", zap.String("error", err.Error()))
+		panic("config initial failed")
 	}
-	fmt.Sprintln(conf.GetValue("db.conf"))
+
+	fmt.Println(c.GetStringValue("database.database", "1"))
+
+	// 获取命令行参数
+	initFs()
 }
