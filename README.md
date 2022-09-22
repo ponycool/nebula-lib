@@ -35,6 +35,11 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
 include in the README.
 
+## 测试
+
+```
+go test -v ./test/...
+```
 ## Support
 
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address,
