@@ -11,7 +11,6 @@ import (
 var (
 	rwLock  sync.RWMutex
 	initial bool
-	conf    agollo.Client
 )
 
 // Options  配置结构体

@@ -1,28 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"github.com/apolloconfig/agollo/v4"
 	"github.com/ponycool/nebula-lib/conf"
-	"github.com/ponycool/nebula-lib/log"
 	"go.uber.org/zap"
 	"os"
 	"strconv"
 )
 
-func main() {
+var config agollo.Client
 
-	// 初始化日志
-	logger := log.Init(
-		log.SetAppName("nebula-lib"),
-		log.SetDevelopment(true),
-		log.SetLevel(zap.DebugLevel),
-		log.SetMaxSize(2),
-		log.SetMaxBackups(100),
-		log.SetMaxAge(30),
-	)
-	logger.Info("logger initial successful")
-
-	// 初始化配置
+// 初始化配置
+func confInit() {
 	conf.Load()
 	isBackupConfig, _ := strconv.ParseBool(os.Getenv("IS_BACKUP_CONFIG"))
 	opts := &conf.Options{
@@ -34,14 +23,10 @@ func main() {
 		Secret:         os.Getenv("SECRET"),
 	}
 
-	c, err := conf.Init(opts)
+	var err error
+	config, err = conf.Init(opts)
 	if err != nil {
 		defer logger.Error("config initial failed", zap.String("error", err.Error()))
 		panic("config initial failed")
 	}
-
-	fmt.Println(c.GetStringValue("database.database", "1"))
-
-	// 获取命令行参数
-	initFs()
 }
