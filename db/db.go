@@ -8,9 +8,9 @@ import (
 )
 
 var (
-	rwLock  sync.RWMutex
-	initial bool
-	sqlDB   *sql.DB
+	rwLock      sync.RWMutex
+	initialized bool
+	sqlDB       *sql.DB
 )
 
 type Config struct {
@@ -50,7 +50,7 @@ func Init(conf Config, logger *zap.Logger) {
 
 	var err error
 
-	if initial {
+	if initialized {
 		err = fmt.Errorf("[db] db already initialized")
 		logger.Error(err.Error())
 		return
@@ -71,7 +71,7 @@ func Init(conf Config, logger *zap.Logger) {
 	}
 
 	logger.Info(fmt.Sprintf("[db] %s connection successful", conf.Driver.String()))
-	initial = true
+	initialized = true
 }
 
 func GetDB() *sql.DB {
