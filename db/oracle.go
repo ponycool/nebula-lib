@@ -20,7 +20,7 @@ type OracleConf struct {
 	Password string `json:"password"`
 	Host     string `json:"host"`
 	Port     string `json:"port"`
-	Database string `json:"database"`
+	SID      string `json:"sid"`
 }
 
 // OracleInit 初始化Oracle
@@ -59,7 +59,7 @@ func FormatOracleConnUrl(conf *OracleConf) string {
 		conf.Password,
 		conf.Host,
 		port,
-		conf.Database,
+		conf.SID,
 	)
 	return url
 }
