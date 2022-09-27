@@ -9,8 +9,9 @@ import (
 )
 
 var (
-	rwLock  sync.RWMutex
-	initial bool
+	rwLock      sync.RWMutex
+	initialized bool
+	conf        agollo.Client
 )
 
 // Options  配置结构体
@@ -24,11 +25,11 @@ type Options struct {
 }
 
 // Init 初始化
-func Init(opts *Options) (conf agollo.Client, err error) {
+func Init(opts *Options) (client agollo.Client, err error) {
 	rwLock.Lock()
 	defer rwLock.Unlock()
 
-	if initial {
+	if initialized {
 		return conf, nil
 	}
 
@@ -48,7 +49,7 @@ func Init(opts *Options) (conf agollo.Client, err error) {
 		return nil, err
 	}
 
-	initial = true
+	initialized = true
 	return conf, nil
 }
 
