@@ -6,8 +6,32 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 	orm "moul.io/zapgorm2"
+	"sync"
 	"time"
 )
+
+var (
+	ormLock        sync.RWMutex
+	ormInitialized bool
+)
+
+type Orm struct {
+}
+
+// Init 初始化ORM
+func (orm *Orm) Init(tablePrefix string, logger *zap.Logger) {
+	ormLock.Lock()
+	defer ormLock.Unlock()
+
+	if ormInitialized {
+		return
+	}
+
+	if tablePrefix == "" {
+		tablePrefix = "m_"
+	}
+	db = getOrm(tablePrefix, logger)
+}
 
 // 获取数据库ORM实例
 func getOrm(tablePrefix string, logger *zap.Logger) *gorm.DB {
