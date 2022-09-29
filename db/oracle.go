@@ -23,6 +23,9 @@ type OracleConf struct {
 	SID      string `json:"sid"`
 }
 
+type Ora struct {
+}
+
 // OracleInit 初始化Oracle
 func OracleInit(conf Config, logger *zap.Logger) {
 	oracleLock.Lock()
