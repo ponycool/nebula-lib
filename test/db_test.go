@@ -39,6 +39,6 @@ func TestMySQL(t *testing.T) {
 		MaxOpenConnection: dbMaxOpenConnection,
 		ConnMaxLifetime:   dbConnMaxLifetime,
 	}
-
+	db := db.DB{}
 	db.Init(dbConf, log.Get())
 }
