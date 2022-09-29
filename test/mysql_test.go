@@ -12,7 +12,8 @@ func TestTableCount(t *testing.T) {
 	logInit()
 	confInit()
 
-	db.OrmInit("", log.Get())
+	orm := new(db.Orm)
+	orm.Init("", log.Get())
 
 	table := "m_account"
 	count := db.TableCount(table)
