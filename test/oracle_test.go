@@ -35,14 +35,14 @@ func TestConnect(t *testing.T) {
 
 type model struct {
 	NAME1 string `json:"name_1"`
-	SORTL string
+	SORTL string `json:"sortl"`
 }
 
 func TestQuery(t *testing.T) {
 	t.Helper()
 
 	sql := "select NAME1,SORTL from T_YEJI_DETAIL_GNW_KH where NAME1= 'Akram Yousif'"
-
+	
 	// 占位符示例
 	// sql := "select NAME1 from T_YEJI_DETAIL_GNW_KH where NAME1= :1"
 	// param := []string{
