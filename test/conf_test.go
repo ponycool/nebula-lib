@@ -12,6 +12,9 @@ var config agollo.Client
 
 // 初始化配置
 func confInit() {
+	if config != nil {
+		return
+	}
 	conf.Load()
 	isBackupConfig, _ := strconv.ParseBool(os.Getenv("IS_BACKUP_CONFIG"))
 	opts := &conf.Options{

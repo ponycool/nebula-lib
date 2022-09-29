@@ -9,6 +9,9 @@ var logger *zap.Logger
 
 // 初始化日志
 func logInit() {
+	if logger != nil {
+		return
+	}
 	logger = log.Init(
 		log.SetAppName("nebula-lib"),
 		log.SetDevelopment(true),

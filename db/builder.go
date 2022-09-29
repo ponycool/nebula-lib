@@ -1,31 +1,10 @@
 package db
 
 import (
-	"go.uber.org/zap"
 	"gorm.io/gorm"
-	"sync"
 )
 
-var (
-	ormLock        sync.RWMutex
-	ormInitialized bool
-	db             *gorm.DB
-)
-
-// OrmInit 初始化ORM
-func OrmInit(tablePrefix string, logger *zap.Logger) {
-	ormLock.Lock()
-	defer ormLock.Unlock()
-
-	if ormInitialized {
-		return
-	}
-
-	if tablePrefix == "" {
-		tablePrefix = "m_"
-	}
-	db = getOrm(tablePrefix, logger)
-}
+var db *gorm.DB
 
 // Raw 将原生SQL扫描至模型
 func Raw(dest interface{}, psql string, param ...interface{}) {
