@@ -10,7 +10,7 @@ import (
 var taskQueue []TFunc
 
 type Task struct {
-	// Closed chan bool
+	Closed chan bool
 	Wg     sync.WaitGroup
 	Logger *zap.Logger
 }
@@ -35,13 +35,15 @@ func (t *Task) Run() {
 		go taskQueue[i].Func(t)
 	}
 
-	//for {
-	//	select {
-	//	case <-t.Closed:
-	//		t.Logger.Info("[task] close...")
-	//		return
-	//	}
-	//}
+	go func() {
+		for {
+			select {
+			case <-t.Closed:
+				t.Logger.Info("[task] close...")
+				return
+			}
+		}
+	}()
 }
 
 // Stop 优雅退出所有任务
