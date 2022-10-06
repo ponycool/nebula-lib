@@ -23,6 +23,8 @@ func testCronJob() error {
 func TestJobRun(t *testing.T) {
 	t.Helper()
 
+	logInit()
+
 	fmt.Println("========== 任务运行测试 ============")
 
 	j := job.Job{
@@ -35,6 +37,8 @@ func TestJobRun(t *testing.T) {
 
 func TestJobStart(t *testing.T) {
 	t.Helper()
+
+	logInit()
 
 	fmt.Println("========== 定时任务运行测试 ===========")
 
