@@ -46,8 +46,10 @@ func (j Job) Start(spec string, job Job) {
 	signal.Notify(ch, os.Interrupt)
 	select {
 	case <-ch:
+		j.Logger.Info("[job] got close sig...")
 		return
 	case <-j.Done:
+		j.Logger.Info("[job] job done...")
 		c.Remove(j.JobID)
 	}
 }
