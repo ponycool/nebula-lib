@@ -9,13 +9,10 @@ import (
 )
 
 func testCronTask(t *task.Task) {
+	defer t.Wg.Done()
 	count := 1
 	j := job.Job{
 		Callback: func() (err error) {
-			if count > 5 {
-				defer t.Wg.Done()
-				t.Closed <- true
-			}
 			fmt.Println(fmt.Sprintf("启动一个定时Task任务，这是第%d次执行", count))
 			count++
 			return nil
@@ -33,6 +30,8 @@ func testTask(t *task.Task) {
 
 func TestTask(t *testing.T) {
 	t.Helper()
+
+	logInit()
 
 	fmt.Println("======== Task 运行测试 ========")
 
