@@ -9,6 +9,8 @@ import (
 
 type Job struct {
 	Callback func() (err error)
+	JobID    cron.EntryID
+	Done     chan bool
 	Logger   *zap.Logger
 }
 
@@ -26,11 +28,14 @@ func (j Job) Start(spec string, job Job) {
 	logger := &DefaultLog{
 		logger: j.Logger,
 	}
+
 	c := cron.New(cron.WithChain(cron.SkipIfStillRunning(logger)))
-	_, err := c.AddJob(spec, &job)
+	id, err := c.AddJob(spec, &job)
 	if err != nil {
 		return
 	}
+
+	j.JobID = id
 
 	// 启动执行任务
 	c.Start()
@@ -41,6 +46,10 @@ func (j Job) Start(spec string, job Job) {
 	signal.Notify(ch, os.Interrupt)
 	select {
 	case <-ch:
+		j.Logger.Info("[job] got close sig...")
 		return
+	case <-j.Done:
+		j.Logger.Info("[job] job done...")
+		c.Remove(j.JobID)
 	}
 }
