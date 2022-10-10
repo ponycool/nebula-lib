@@ -2,7 +2,7 @@ package db
 
 import (
 	"go.uber.org/zap"
-	"gorm.io/driver/mysql"
+	mysqlDriver "gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 	orm "moul.io/zapgorm2"
@@ -40,7 +40,7 @@ func getOrm(tablePrefix string, logger *zap.Logger) *gorm.DB {
 	ormLogger.SetAsDefault()
 	// 忽略未找到记录错误
 	ormLogger.IgnoreRecordNotFoundError = true
-	dbInstance, err := gorm.Open(mysql.New(mysql.Config{
+	dbInstance, err := gorm.Open(mysqlDriver.New(mysqlDriver.Config{
 		Conn: GetDB(),
 	}), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
