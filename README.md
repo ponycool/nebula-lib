@@ -46,4 +46,4 @@ DockerHub：https://hub.docker.com/u/ponycool
 
 ## License
 
-For open source projects, say how it is licensed.
+Released under the MIT License.
