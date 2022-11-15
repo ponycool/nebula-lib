@@ -18,6 +18,12 @@ go get github.com/ponycool/nebula-lib
 go test -v ./test/...
 ```
 
+Test a single file
+
+```shell
+go test -v ./test/x.go
+```
+
 ## Usage
 
 Refer to test examples
@@ -47,4 +53,4 @@ DockerHub：https://hub.docker.com/u/ponycool
 
 ## License
 
-For open source projects, say how it is licensed.
+Released under the MIT License.
