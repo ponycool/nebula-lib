@@ -24,3 +24,23 @@ func (t Time) TimeStringToTime(timeStr string) time.Time {
 	}
 	return time.Time{}
 }
+
+// GetNowSec 获取Unix时间戳，精确到秒
+func GetNowSec() int64 {
+	return time.Now().Unix()
+}
+
+// GetNowMs 获取Unix时间戳，精确到毫秒
+func GetNowMs() int64 {
+	return time.Now().UnixNano() / int64(time.Millisecond)
+}
+
+// GetNowUs 获取Unix时间戳，精确到微妙
+func GetNowUs() int64 {
+	return time.Now().UnixNano() / int64(time.Microsecond)
+}
+
+// GetNowNs 获取Unix时间戳，精确到纳秒
+func GetNowNs() int64 {
+	return time.Now().UnixNano()
+}
