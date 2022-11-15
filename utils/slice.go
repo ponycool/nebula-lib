@@ -5,6 +5,8 @@ import (
 	"reflect"
 )
 
+// 参考项目 https://github.com/dablelv/go-huge-util
+
 // UniqueSlice 删除切片中的重复值
 func UniqueSlice(slice interface{}) (interface{}, error) {
 	// check params
