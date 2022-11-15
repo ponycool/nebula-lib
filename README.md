@@ -22,6 +22,12 @@ go get github.com/ponycool/nebula-lib
 go test -v ./test/...
 ```
 
+测试单个文件
+
+```shell
+go test -v ./test/x.go
+```
+
 ## Support
 
 Blog: https://www.mayanpeng.cn
