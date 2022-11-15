@@ -18,6 +18,12 @@ go get github.com/ponycool/nebula-lib
 go test -v ./test/...
 ```
 
+Test a single file
+
+```shell
+go test -v ./test/x.go
+```
+
 ## Usage
 
 Refer to test examples
