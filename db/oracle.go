@@ -41,7 +41,7 @@ func OracleInit(conf Config, logger *zap.Logger) {
 
 	oracle, err = sql.Open("godror", conf.URL)
 
-	err = oracle.Ping()
+	//err = oracle.Ping()
 
 	if err != nil {
 		defer logger.Error(err.Error())
