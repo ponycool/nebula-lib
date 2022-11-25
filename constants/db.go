@@ -5,8 +5,8 @@ func DataDeleted() []uint8 {
 	return []uint8{1}
 }
 
-// DataUNDELETED 逻辑删除状态：正常
-func DataUNDELETED() []uint8 {
+// DataUndeleted 逻辑删除状态：正常
+func DataUndeleted() []uint8 {
 	return []uint8{0}
 }
 
