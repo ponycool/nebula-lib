@@ -9,7 +9,7 @@
 ## 安装
 
 ```
-go get github.com/ponycool/nebula-lib
+go get github.com/ponycool/nebula-lib@latest
 ```
 
 ## 使用
