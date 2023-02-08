@@ -30,7 +30,7 @@ go test -v ./test/x.go
 
 ## Support
 
-Blog: https://www.mayanpeng.cn
+Blog: https://mayanpeng.cn
 
 Email: pony#ponycool.com(将#替换为@)
 
