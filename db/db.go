@@ -30,7 +30,6 @@ const (
 	MariaDB Driver = 0
 	MySQL   Driver = 1
 	PgSQL   Driver = 2
-	Oracle  Driver = 3
 )
 
 func (driver Driver) String() string {
@@ -41,8 +40,6 @@ func (driver Driver) String() string {
 		return "mysql"
 	case PgSQL:
 		return "postgresql"
-	case Oracle:
-		return "oracle"
 	default:
 		return "mysql"
 	}
