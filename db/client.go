@@ -1,6 +1,5 @@
 package db
 
-//import "C"
 import (
 	"database/sql"
 	"errors"
