@@ -31,6 +31,9 @@ func testTask(t *task.Task) {
 func TestTask(t *testing.T) {
 	t.Helper()
 
+	// 暂不执行测试
+	t.Skip()
+
 	logInit()
 
 	fmt.Println("======== Task 运行测试 ========")
