@@ -7,8 +7,10 @@ import (
 	"testing"
 )
 
-type demo struct {
-	ID int
+type perf_hw_kh_v1 struct {
+	Name1   string
+	Sortl   string
+	Ymonths string
 }
 
 func TestClickHouse(t *testing.T) {
@@ -32,8 +34,8 @@ func TestClickHouse(t *testing.T) {
 	if err != nil {
 		return
 	}
-	var demos []demo
-	orm.DB.Find(&demos)
+	var kh perf_hw_kh_v1
+	orm.DB.First(&kh)
 
-	logger.Info("clickhouse test", zap.Any("demos", demos))
+	logger.Info("clickhouse test", zap.Any("kh", kh))
 }
