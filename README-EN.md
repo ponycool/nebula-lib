@@ -30,7 +30,7 @@ Refer to test examples
 
 ## Support
 
-Blog: https://www.mayanpeng.cn
+Blog: https://mayanpeng.cn
 
 Email: pony#ponycool.com(Replace # with @)
 
