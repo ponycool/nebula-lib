@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+var ClickhouseConn *sql.DB
+
 type Clickhouse struct {
 	DB *sql.DB
 }
@@ -75,6 +77,7 @@ func (ch *Clickhouse) Init(conf ClickhouseConfig) error {
 	}
 
 	ch.DB = conn
+	ClickhouseConn = conn
 	return nil
 }
 
@@ -87,6 +90,6 @@ func (ch *Clickhouse) Close() {
 	}
 }
 
-func (ch *Clickhouse) GetDB() *sql.DB {
-	return ch.DB
+func GetClickHouseConn() *sql.DB {
+	return ClickhouseConn
 }
