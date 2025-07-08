@@ -86,3 +86,7 @@ func (ch *Clickhouse) Close() {
 		}
 	}
 }
+
+func (ch *Clickhouse) GetDB() *sql.DB {
+	return ch.DB
+}
