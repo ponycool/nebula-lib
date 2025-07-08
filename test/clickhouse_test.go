@@ -17,7 +17,7 @@ func TestClickHouse(t *testing.T) {
 	logInit()
 	confInit()
 
-	ch := new(db.Clickhouse)
+	ch := &db.Clickhouse{}
 	port, _ := strconv.Atoi(config.GetValue("clickhouse.port"))
 	err := ch.Init(db.ClickhouseConfig{
 		Host:     config.GetValue("clickhouse.host"),
@@ -29,7 +29,7 @@ func TestClickHouse(t *testing.T) {
 		return
 	}
 
-	orm := new(db.ClickHouseOrm)
+	orm := &db.ClickHouseOrm{}
 	err = orm.Init(ch.DB)
 	if err != nil {
 		return
